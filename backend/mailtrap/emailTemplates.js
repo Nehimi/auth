@@ -199,7 +199,7 @@ export const verificationEmailTemplate = (name, code) => {
 
 export const welcomeEmailTemplate = (name) => {
   const content = `
-    ${createHeader('', `Welcome, ${name}!`, 'Your account has been successfully verified')}
+    ${createHeader('', 'Welcome! ' + name, 'Your account has been successfully verified')}
     
     <div style="${STYLES.content}">
       <p style="${STYLES.paragraph}">Thank you for joining Liddo notes! Your email has been verified and you're all set to start using our platform.</p>
@@ -217,6 +217,30 @@ export const welcomeEmailTemplate = (name) => {
           transition: all 0.3s ease;
         ">Get Started</a>
       </div>
+    </div>
+    
+    ${createFooter()}
+  `;
+  
+  return createEmailWrapper(content);
+};
+
+export const passwordResetEmailTemplate = (name, resetURL) => {
+  const content = `
+    ${createHeader('?', 'Password Reset Requested', 'Follow the steps below to reset your password')}
+    
+    <div style="${STYLES.content}">
+      <p style="${STYLES.paragraph}">Hi <strong style="color: #2d3748;">${name}</strong>,</p>
+      
+      <p style="${STYLES.paragraph}">We received a request to reset your password. Please follow the steps below to complete the process:</p>
+      
+      <p>${resetURL}
+      </p>  
+      ${createVerificationCode(resetURL)} 
+      
+      ${createAlert('This code will expire in <strong>10 minutes</strong> for security reasons.', '')}
+      
+      ${createSecurityNotice('If you didn\'t request this reset, please ignore this email. Your account remains secure.')}
     </div>
     
     ${createFooter()}
