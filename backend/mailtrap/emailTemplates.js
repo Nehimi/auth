@@ -248,3 +248,21 @@ export const passwordResetEmailTemplate = (name, resetURL) => {
   
   return createEmailWrapper(content);
 };
+
+export const PASSWORD_RESET_SUCCESSTemplate = (name, message) => {
+  const content = `
+    ${createHeader('?', 'Password Reset Successful', 'Your password has been reset successfully')}
+    
+    <div style="${STYLES.content}">
+      <p style="${STYLES.paragraph}">Hello <strong style="color: #2d3748;">${name}</strong>,</p>
+      
+      <p style="${STYLES.paragraph}">We are pleased to inform you that your password has been successfully reset.</p>
+      
+      <p>${message}</p>
+      
+      ${createFooter()}
+    </div>
+  `;
+  
+  return createEmailWrapper(content);
+}

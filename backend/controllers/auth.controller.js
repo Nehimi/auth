@@ -1,7 +1,7 @@
 import generateVerificationCode from '../utils/generateVerificationCode.js';
 import generateTokenAndSetCookies from '../utils/generateTokenAndSetCookies.js';
 import crypto from 'crypto';
-import { sendVerificationEmail, sendWelcomeEmail,sendPasswordResetEmail } from '../mailtrap/emails.js';
+import { sendVerificationEmail, sendWelcomeEmail,sendPasswordResetEmail ,sendSuccessEmail} from '../mailtrap/emails.js';
 import User from '../models/user.model.js';
 import bcrypt from 'bcrypt';
 
@@ -178,3 +178,37 @@ catch(err){
         console.log("error in forgetPassword,err:", err);
     }
 }
+export const resetPassword = async (req,res)=>{
+   
+    try {
+        const {token} = req.params;
+        const password = req.body;
+        const user = await User.findOne({resetPasswordToken:token,resetPasswordExpire:{$gt:Date.now()} });
+        if(!user){
+            return res.status(400).json({
+                success: false,
+                message: "invalid reset token"
+            })
+        }
+        //Update password
+        const hashPassword = await bcrypt.hash(password,10);
+        user.password=hashPassword;
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpire = undefined;
+        await user.save();
+        //Send password reset email
+        await sendPasswordResetEmail(user.email, user.name, `${process.env.CLIENT_URL}/login`);
+        return res.status(200).json({
+            success: true,
+            message: "password reset successfully"
+        })
+
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        });
+        console.log("error in resetPassword,err:", error);
+    }
+}
+
