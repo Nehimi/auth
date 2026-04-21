@@ -199,7 +199,7 @@ export const verificationEmailTemplate = (name, code) => {
 
 export const welcomeEmailTemplate = (name) => {
   const content = `
-    ${createHeader('', 'Welcome!', 'Your account has been successfully verified')}
+    ${createHeader('', `Welcome, ${name}!`, 'Your account has been successfully verified')}
     
     <div style="${STYLES.content}">
       <p style="${STYLES.paragraph}">Thank you for joining Liddo notes! Your email has been verified and you're all set to start using our platform.</p>
