@@ -235,7 +235,7 @@ If you have any questions or need support, please open an issue in the repositor
 
 <div align="center">
 
-**Built with ❤️ by [Your Name]**
+**Built with ❤️ by Nehimi**
 
 *Part 1 of a complete authentication system*
 
