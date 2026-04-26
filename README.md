@@ -40,7 +40,6 @@
    ```bash
    cd backend
    npm install
-   cp .env.example .env
    ```
    
    Configure your backend `.env` file:
@@ -109,7 +108,7 @@ Node-Auth/
 │   tailwind.config.js         # Tailwind configuration
 │   postcss.config.js          # PostCSS configuration
 │   vite.config.js             # Vite configuration
-│   README.md                  # Frontend documentation Part 2)
+│   README.md                  # Frontend documentation Part 2
 ├── package.json
 └── README.md
 ```
@@ -121,8 +120,8 @@ Node-Auth/
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `POST` | `/api/auth/signup` | Register new user with email verification |
-| `POST` | `/api/auth/login` | User login (Coming soon) |
-| `POST` | `/api/auth/logout` | User logout (Coming soon) |
+| `POST` | `/api/auth/login` | User login |
+| `POST` | `/api/auth/logout` | User logout |
 
 ### Request Examples
 
@@ -262,7 +261,7 @@ If you have any questions or need support, please open an issue in the repositor
 
 <div align="center">
 
-**Built with ❤️ by [Your Name]**
+**Built with ❤️ by Nehimi**
 
 *Part 1 of a complete authentication system*
 
