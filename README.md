@@ -33,39 +33,53 @@
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd new-frolde
+   cd Node-Auth
    ```
 
-2. **Install dependencies**
+2. **Backend Setup**
    ```bash
+   cd backend
+   npm install
+   ```
+   
+   Configure your backend `.env` file:
+   ```env
+   MONGODB_URI=mongodb://localhost:27017/auth
+   JWT_SECRET=your-super-secret-jwt-key
+   MAILTRAP_TOKEN=your-mailtrap-token
+   MAILTRAP_ENDPOINT=https://send.api.mailtrap.io/api/send
+   MAILTRAP_SENDER_EMAIL=noreply@yourdomain.com
+   CLIENT_URL=http://localhost:3000
+   PORT=3000
+   ```
+
+3. **Frontend Setup**
+   ```bash
+   cd ../frontend
    npm install
    ```
 
-3. **Environment Setup**
+4. **Start Both Servers**
+   
+   **Terminal 1 - Backend:**
    ```bash
-   cp .env.example .env
+   cd backend
+   npm run dev
    ```
    
-   Configure your `.env` file:
-   ```env
-   PORT=5000
-   MONGODB_URI=mongodb://localhost:27017/auth-system
-   JWT_SECRET=your-super-secret-jwt-key
-   MAILTRAP_TOKEN=your-mailtrap-token
-   SENDER_EMAIL=your-email@example.com
-   ```
-
-4. **Start the development server**
+   **Terminal 2 - Frontend:**
    ```bash
+   cd frontend
    npm run dev
    ```
 
-   The server will start on `http://localhost:5000`
+   **Backend:** `http://localhost:3000`  
+   **Frontend:** `http://localhost:5173`
 
 ## 📁 Project Structure
 
 ```
-new-frolde/
+Node-Auth/
 ├── backend/
 │   ├── controllers/
 │   │   └── auth.controller.js    # Authentication logic
@@ -82,7 +96,19 @@ new-frolde/
 │   ├── db/
 │   │   └── connectDB.js          # Database connection
 │   └── index.js                  # Main server file
-├── frontend/                     # (Coming in Part 2)
+├── frontend/
+│   src/
+│     App.jsx                   # Main React component
+│     index.css                 # Tailwind CSS + custom styles
+│     main.jsx                  # React entry point
+│   public/
+│     index.html                # HTML template
+│   dist/                       # Built production files
+│   package.json               # Frontend dependencies
+│   tailwind.config.js         # Tailwind configuration
+│   postcss.config.js          # PostCSS configuration
+│   vite.config.js             # Vite configuration
+│   README.md                  # Frontend documentation Part 2
 ├── package.json
 └── README.md
 ```
@@ -94,8 +120,8 @@ new-frolde/
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `POST` | `/api/auth/signup` | Register new user with email verification |
-| `POST` | `/api/auth/login` | User login (Coming soon) |
-| `POST` | `/api/auth/logout` | User logout (Coming soon) |
+| `POST` | `/api/auth/login` | User login |
+| `POST` | `/api/auth/logout` | User logout |
 
 ### Request Examples
 

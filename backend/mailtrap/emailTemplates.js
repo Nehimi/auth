@@ -154,7 +154,7 @@ const createFooter = () => `
     <p style="color: #6c757d; margin: 0 0 10px; font-size: 14px;">Best regards,</p>
     <p style="color: #2d3748; margin: 0; font-size: 16px; font-weight: 600;">The Team</p>
     <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e9ecef;">
-      <p style="color: #adb5bd; font-size: 12px; margin: 0;"> 2026 Your Company. All rights reserved.</p>
+      <p style="color: #adb5bd; font-size: 12px; margin: 0;"> 2026 Liddo notes. All rights reserved.</p>
     </div>
   </div>
 `;
